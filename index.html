@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+        <link rel="stylesheet" href="style.css">
+        <title>Age Calculator</title>
+    </head>
+    <body>
+       <section class="mainBdy">
+            <div class="mainCrd">
+                <div class="inpForm">
+                    <div class="inputField">
+                        <label for="dayIn" class="" id="labelid">DAY</label><br>
+                        <input type="text" class="input-s" name="day" id="dayIn" placeholder="DD" autocomplete="off" minlength="2">
+                        <div class="err">
+                            <p class="hide" id="err11">This field is required</p>
+                            <p class="hide" id="err21">Must be a valid date</p>
+                            <p class="hide" id="err31">Must be a valid day</p>
+                        </div>
+                    </div>
+                    <div class="inputField">
+                        <label for="monthIn" class="" id="labelid">MONTH</label><br>
+                        <input type="text" class="input-s" name="months" id="monthIn" placeholder="MM" autocomplete="off" minlength="2">
+                        <div class="err">
+                            <p class="hide" id="err11">This field is required</p>
+                            <p class="hide" id="err22">Must be a valid month</p>
+                        </div>
+                    </div>
+                    <div class="inputField">
+                        <label for="yearIn" class="" id="labelid">YEAR</label><br>
+                        <input type="text" class="input-s" name="years" id="yearIn" placeholder="YYYY" autocomplete="off" minlength="2">
+                        <div class="err">
+                            <p class="hide" id="err11">This field is required</p>
+                            <p class="hide" id="err23">Must be in past</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="subBtnCont">
+                    <hr>
+                    <img src="assets/icon-arrow.svg" id="calculateBtn">
+                </div>
+                <div class="outputCont">
+                    <h1 class="output">
+                        <span id="yearOut">--</span>years <br>
+                        <span id="monthOut">--</span>months <br>
+                        <span id="dayOut">--</span>days 
+                    </h1>
+                </div>
+            </div>
+       </section>
+        <script src="script.js"></script>
+    </body>
+</html>
