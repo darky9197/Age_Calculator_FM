@@ -114,7 +114,7 @@
 
 /* responsiveness */
 
-@media (max-width: 375px){
+@media (max-width: 425px){
     .mainCrd{
         padding: 2rem 1rem;
         border-radius: 25px 25px 150px 25px;
