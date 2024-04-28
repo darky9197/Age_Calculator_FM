@@ -79,7 +79,7 @@
 .err {
     color: hsl(0, 100%, 67%);
     font-style: italic;
-    font-size: 16rem;
+    font-size: 16px;
 }
 
 .show{
