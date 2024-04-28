@@ -79,7 +79,7 @@
 .err {
     color: hsl(0, 100%, 67%);
     font-style: italic;
-    font-size: 1rem;
+    font-size: 16rem;
 }
 
 .show{
@@ -109,4 +109,36 @@
 }
 .subBtnCont img:active{
     background-color: hsl(0, 0%, 8%);
+}
+
+
+/* responsiveness */
+
+@media (max-width: 375px){
+    .mainCrd{
+        padding: 2rem 1rem;
+        border-radius: 25px 25px 150px 25px;
+        margin: 15px;
+    }
+    .inpForm .inputField{
+        font-size: 1rem;
+        padding-right: 10px;
+    }
+    .input-s{
+        width: 100px;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+    .subBtnCont img{
+        height: 60px;
+        padding: 1rem;
+        left: 40%;
+    }
+    .outputCont .output{
+        font-size: 3rem;
+        line-height: 50px;
+    }
+    .err{
+        font-size: 10px;
+    }
 }
