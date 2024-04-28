@@ -1,6 +1,6 @@
 let dateString = '';
 let dateStringC = '';
-let dateObj;
+let dateObjn;
 
 const dateObjC = new Date();
 let cday = dateObjC.getDate();
@@ -11,16 +11,34 @@ const calc = document.getElementById("calculateBtn").addEventListener("click",()
     const datein = document.getElementById("dayIn");
     const monthin = document.getElementById("monthIn");
     const yearin = document.getElementById("yearIn");
+    const label = document.querySelectorAll("#labelid");
+    const inputs = document.querySelectorAll(".input-s");
+    const dayout = document.getElementById("dayOut");
+    const monthout = document.getElementById("monthOut");
+    const yearout = document.getElementById("yearOut");
 
-    // date validation
+    // empty string validation
     if(datein.value === "" || monthin.value === "" || yearin.value === "") {
         const ele = document.querySelectorAll("#err11")
         ele.forEach((e)=>{
             e.classList.remove("hide")
             e.classList.add("show")   
         })
+        label.forEach((e)=>{
+            e.classList.add("red")
+        })
+        inputs.forEach((e)=>{
+            e.classList.add("bred")
+        })
+        
     }
     else{
+        const ele = document.querySelectorAll("#err11")
+        ele.forEach((e)=>{
+            e.classList.remove("show")
+            e.classList.add("hide")   
+        })
+        // Non Integer validation
         if(isNaN(datein.value) || isNaN(monthin.value) || isNaN(yearin.value)){
             alert("Enter Numerical Values")
             datein.value = "";
@@ -28,31 +46,65 @@ const calc = document.getElementById("calculateBtn").addEventListener("click",()
             yearin.value = "";
         }
         else{
+            // date format validation
             if(datein.value > 31){
                 const ele = document.getElementById("err31")
                 ele.classList.remove("hide")
                 ele.classList.add("show")   
+
+                label.forEach((e)=>{
+                    e.classList.add("red")
+                })
+                inputs.forEach((e)=>{
+                    e.classList.add("bred")
+                })
             }
             else if(monthin.value > 12){
                 const ele = document.getElementById("err22")
                 ele.classList.remove("hide")
                 ele.classList.add("show")  
+
+                label.forEach((e)=>{
+                    e.classList.add("red")
+                })
+                inputs.forEach((e)=>{
+                    e.classList.add("bred")
+                })
             }
             else if(yearin.value >= cyear){
                 const ele = document.getElementById("err23")
                 ele.classList.remove("hide")
                 ele.classList.add("show")  
+
+                label.forEach((e)=>{
+                    e.classList.add("red")
+                })
+                inputs.forEach((e)=>{
+                    e.classList.add("bred")
+                })
             }
             else{
+                const ele1 = document.getElementById("err31")
+                ele1.classList.remove("show")
+                ele1.classList.add("hide")  
+
+                const ele2 = document.getElementById("err22")
+                ele2.classList.remove("show")
+                ele2.classList.add("hide")  
+
+                const ele3 = document.getElementById("err23")
+                ele3.classList.remove("show")
+                ele3.classList.add("hide") 
+
                 dateString = `${yearin.value}-${monthin.value}-${datein.value}`;
-                dateObj = new Date(dateString)
+                let dateObj = new Date(dateString)
+                dateObjn = dateObj;
                 console.log(dateString)
                 console.log(dateObj)
                 
+                // Valid Date validation
                 if(!isNaN(dateObj)){
                     console.log("valid")
-                    const label = document.querySelectorAll("#labelid");
-                    const inputs = document.querySelectorAll(".input-s");
                     label.forEach((e)=>{
                         e.classList.remove("red")
                     });
@@ -65,8 +117,6 @@ const calc = document.getElementById("calculateBtn").addEventListener("click",()
                 }
                 else{
                     console.log("Invalid")
-                    const label = document.querySelectorAll("#labelid");
-                    const inputs = document.querySelectorAll(".input-s");
                     label.forEach((e)=>{
                         e.classList.add("red")
                     })
@@ -82,11 +132,8 @@ const calc = document.getElementById("calculateBtn").addEventListener("click",()
     }    
 
     // Age Calculation System
-    const dayout = document.getElementById("dayOut");
-    const monthout = document.getElementById("monthOut");
-    const yearout = document.getElementById("yearOut");
 
-    const tDiff = dateObjC.getTime() - dateObj.getTime();
+    const tDiff = dateObjC.getTime() - dateObjn.getTime();
     const dDiff = Math.round(tDiff / (1000 * 60 * 60 * 24));
     console.log(dDiff);
 
@@ -100,3 +147,11 @@ const calc = document.getElementById("calculateBtn").addEventListener("click",()
     dayout.textContent = Math.round(day);
     
 });
+
+
+document.oncontextmenu = function(e){
+    var target = (typeof e !="undefined")? e.target: event.srcElement
+    if (target.tagName == "IMG" || (target.tagName == 'A' && target.firstChild.tagName == 'IMG'))
+        return false
+
+}
