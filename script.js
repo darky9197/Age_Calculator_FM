@@ -105,6 +105,22 @@ const calc = document.getElementById("calculateBtn").addEventListener("click",()
                 // Valid Date validation
                 if(!isNaN(dateObj)){
                     console.log("valid")
+                    
+                    // Age Calculation System
+                    const tDiff = dateObjC.getTime() - dateObjn.getTime();
+                    const dDiff = Math.round(tDiff / (1000 * 60 * 60 * 24));
+                    console.log(dDiff);
+
+                    let year = dDiff / 365;
+                    let day = dDiff % 365;
+                    let month = day / 30;
+                    day = day % 30;
+    
+                    yearout.textContent = Math.round(year);
+                    monthout.textContent = Math.round(month);
+                    dayout.textContent = Math.round(day);
+
+                    
                     label.forEach((e)=>{
                         e.classList.remove("red")
                     });
@@ -129,23 +145,7 @@ const calc = document.getElementById("calculateBtn").addEventListener("click",()
                 }
             }
         }
-    }    
-
-    // Age Calculation System
-
-    const tDiff = dateObjC.getTime() - dateObjn.getTime();
-    const dDiff = Math.round(tDiff / (1000 * 60 * 60 * 24));
-    console.log(dDiff);
-
-    let year = dDiff / 365;
-    let day = dDiff % 365;
-    let month = day / 30;
-    day = day % 30;
-    
-    yearout.textContent = Math.round(year);
-    monthout.textContent = Math.round(month);
-    dayout.textContent = Math.round(day);
-    
+    }      
 });
 
 
